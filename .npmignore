@@ -1,0 +1,9 @@
+GUIDE.zh-CN.md
+CONTRIBUTING.md
+CONTRIBUTING.zh-CN.md
+SECURITY.md
+CHANGELOG.zh-CN.md
+coverage
+tests
+src
+*.tgz

@@ -1,0 +1,80 @@
+{
+  "name": "yume-dsl-codemirror",
+  "version": "0.1.0",
+  "description": "CodeMirror 6 extensions for yumeDSL editing: highlighting, completions, and incremental edit bridging.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --target esnext",
+    "lint": "npm run lint:eslint && tsc --noEmit -p tsconfig.json",
+    "lint:eslint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "tsup --target esnext && node --import tsx tests/run-codemirror-tests.ts",
+    "test:coverage": "YUME_DSL_COVERAGE_SOURCEMAP=1 tsup --target esnext && c8 node --enable-source-maps --import tsx tests/run-codemirror-tests.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "yume-dsl",
+    "codemirror",
+    "codemirror6",
+    "rich-text",
+    "dsl",
+    "editor",
+    "syntax-highlighting",
+    "autocomplete"
+  ],
+  "author": "Hoshino Yumeka",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chiba233/yume-dsl-codemirror.git"
+  },
+  "homepage": "https://github.com/chiba233/yume-dsl-codemirror#readme",
+  "bugs": {
+    "url": "https://github.com/chiba233/yume-dsl-codemirror/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@codemirror/autocomplete": ">=6.0.0",
+    "@codemirror/state": ">=6.0.0",
+    "@codemirror/view": ">=6.0.0",
+    "yume-dsl-rich-text": ">=1.5.0"
+  },
+  "devDependencies": {
+    "@codemirror/autocomplete": "^6.20.1",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/view": "^6.41.0",
+    "@types/node": "^25.5.0",
+    "c8": "^11.0.0",
+    "eslint": "^10.2.1",
+    "globals": "^17.5.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2",
+    "yume-dsl-rich-text": "^1.5.0"
+  }
+}
